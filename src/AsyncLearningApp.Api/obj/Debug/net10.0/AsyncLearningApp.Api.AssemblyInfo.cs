@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AsyncLearningApp.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d0f034b7c6070547bea25b01799bc90541909702")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9e7808a03663eeef784a078af232b1ba5e76e20f")]
 [assembly: System.Reflection.AssemblyProductAttribute("AsyncLearningApp.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AsyncLearningApp.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
