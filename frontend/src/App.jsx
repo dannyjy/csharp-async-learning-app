@@ -1,35 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
+import Dashboard from './components/Dashboard';
+import TaskManager from './components/TaskManager';
+import FileProcessing from './components/FileProcessing';
+import ExternalApiDemo from './components/ExternalApiDemo';
+import Notifications from './components/Notifications';
+import ParallelProcessing from './components/ParallelProcessing';
 
+/**
+ * Main App Component
+ * 
+ * This is the root component that manages navigation between different
+ * learning modules. Each module demonstrates different async patterns.
+ */
 function App() {
-  const [count, setCount] = useState(0)
+  const [activeModule, setActiveModule] = useState('dashboard');
+
+  const modules = {
+    dashboard: { name: 'Dashboard', component: Dashboard },
+    tasks: { name: 'Task Manager', component: TaskManager },
+    fileProcessing: { name: 'File Processing', component: FileProcessing },
+    externalApi: { name: 'External API', component: ExternalApiDemo },
+    notifications: { name: 'Notifications', component: Notifications },
+    parallel: { name: 'Parallel Processing', component: ParallelProcessing },
+  };
+
+  const ActiveComponent = modules[activeModule].component;
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="app">
+      <div className="header">
+        <h1>C# Async Learning App</h1>
+        <p>Master asynchronous programming patterns in C# and ASP.NET Core</p>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+      <nav className="navigation">
+        {Object.entries(modules).map(([key, { name }]) => (
+          <button
+            key={key}
+            className={`nav-button ${activeModule === key ? 'active' : ''}`}
+            onClick={() => setActiveModule(key)}
+          >
+            {name}
+          </button>
+        ))}
+      </nav>
+
+      <main>
+        <ActiveComponent />
+      </main>
+
+      <footer style={{ textAlign: 'center', padding: '20px', color: 'var(--text-secondary)' }}>
+        <p>Built with ASP.NET Core 10.0 and React 18 • Educational Purpose</p>
+      </footer>
+    </div>
+  );
 }
 
-export default App
+export default App;
