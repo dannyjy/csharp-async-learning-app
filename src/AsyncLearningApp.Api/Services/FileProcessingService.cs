@@ -46,10 +46,10 @@ public class FileProcessingService : IFileProcessingService
 
         // Start processing in background using Task.Run
         // This offloads the work to a thread pool thread
-        _ = Task.Run(async () => await ProcessFileAsync(job, uploadDto.FileSizeKb, cancellationToken), cancellationToken);
+        _ = Task.Run(() => ProcessFileAsync(job, uploadDto.FileSizeKb, cancellationToken), cancellationToken);
 
         // Return immediately without waiting for processing to complete
-        return await Task.FromResult(job);
+        return job;
     }
 
     /// <summary>
